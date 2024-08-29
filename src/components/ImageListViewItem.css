@@ -1,0 +1,24 @@
+.image-list-view-item-content {
+    background-color: aliceblue;
+    height: 180px;
+    width: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.image-list-view-item-image-container{
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.image-list-view-item-bg{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.item-name{
+    z-index: 10;
+}
