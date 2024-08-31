@@ -7,7 +7,6 @@
   background-color: var(--main-background);
 }
 
-
 .App-header {
   width: 100%;
   height: 80px;
@@ -16,6 +15,7 @@
   justify-content: flex-start;
   align-items: center;
   background-color: #f28d56;
+  border-radius: 10px;
 }
 
 .App-logo {
@@ -26,6 +26,8 @@
 
 .App-body {
   margin-top: var(--gap-distance);
+  border-radius: 10px;
+  background-color: brown;
 }
 
 .container {
@@ -34,4 +36,10 @@
 
 .float-right {
   float: inline-end;
+}
+
+.App-title {
+  display: inline;
+  width: 100%;
+  text-align: center;
 }

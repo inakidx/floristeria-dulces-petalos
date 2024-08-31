@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import ImageListView from './ImageListView/ImageListView';
+import ImageListView from './shared/ImageListView/ImageListView';
 
 interface FlowerStockProps {
     filter: string,
 }
 
 const FlowerStock: React.FC<FlowerStockProps> = ({ filter }) => {
-    const [flowerList, setData] = useState<Flower[]>([]);
+    const [flowerList, setFlowerList] = useState<Flower[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
 
@@ -20,8 +20,7 @@ const FlowerStock: React.FC<FlowerStockProps> = ({ filter }) => {
                 return response.json();
             })
             .then((data: Flower[]) => {
-                console.log("traemos flores");
-                setData(data);
+                setFlowerList(data);
                 setLoading(false);
             })
             .catch(error => {
@@ -31,6 +30,7 @@ const FlowerStock: React.FC<FlowerStockProps> = ({ filter }) => {
     }, []);
 
     if (loading) {
+        //TODO: show loading component
         return <p>Loading...</p>;
     }
     if (error) {
@@ -40,9 +40,19 @@ const FlowerStock: React.FC<FlowerStockProps> = ({ filter }) => {
     return (
         <ImageListView listView={getFilteredFlowers()} />
     )
-    function getFilteredFlowers(): Flower[] {
-        return flowerList.filter(f => f.name.toLowerCase().indexOf(filter.toLowerCase()) != -1
-    || f.binomialName.toLowerCase().indexOf(filter.toLowerCase()) != -1)
+    function getFilteredFlowers(): IImageListViewItem[] {
+        return flowerList.filter(f => containsIgnoringCase(f.name, filter)
+            || containsIgnoringCase(f.binomialName, filter))
+            .map(f => (getImageListViewItem(f)))
+    }
+    function containsIgnoringCase(s1: string, s2: string): boolean {
+        return s1.toLowerCase().indexOf(s2.toLowerCase()) != -1
+    }
+    function getImageListViewItem(f: Flower): IImageListViewItem {
+        return {
+            id: f.id, name: f.name, imgUrl: f.imgUrl, subName: f.binomialName, price: f.price,
+            redirectUrl: `/FlowerDetail/${f.id}`
+        }
     }
 }
 
