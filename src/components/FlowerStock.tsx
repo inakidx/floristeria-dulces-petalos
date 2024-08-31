@@ -31,7 +31,7 @@ const FlowerStock: React.FC<FlowerStockProps> = ({ filter }) => {
 
     if (loading) {
         //TODO: show loading component
-        return <p>Loading...</p>;
+        return <p>Cargando...</p>;
     }
     if (error) {
         //TODO: redirect to error

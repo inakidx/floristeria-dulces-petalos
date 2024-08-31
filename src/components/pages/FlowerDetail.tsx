@@ -30,7 +30,7 @@ const FlowerDetail = () => {
 
     if (loading) {
         //TODO: show loading component
-        return <p>Loading...</p>;
+        return <p>Cargando...</p>;
     }
     if (error) {
         //TODO: redirect to error

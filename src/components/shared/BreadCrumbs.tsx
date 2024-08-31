@@ -11,7 +11,7 @@ const BreadCrumbs: React.FC<ImageListViewProps> = ({ breadCrumb }) => {
         return;
 
     return (
-        <a href={'/' + breadCrumb}>{breadCrumb}</a>
+        <a href={'/'}>{breadCrumb}</a>
     )
 }
 
