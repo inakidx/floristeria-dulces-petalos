@@ -1,22 +1,36 @@
-.flower-detail-content{
+.flower-detail-content {
     display: flex;
-    justify-content: flex-start;
-    flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-.flower-detail-image img{
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    overflow: hidden;
     border-radius: 10px;
 }
 
-.flower-detail-description{
-    border-radius: 10px;
-    border: solid 2px black;
-    padding: var(--gap-distance);
-    background-color: white;
+.flower-detail-image {
+    height: max(65vmin, 290px);
 }
 
-.flower-detail-content > div{
+.flower-detail-image img {
+    border-radius: 10px;
+    height: 100%;
+    width: 100%;
+}
+
+.flower-detail-description {
+    width: 40vw;
+}
+
+.flower-detail-description label {
+    font-size: 3.5vmin;
+}
+
+.flower-detail-description ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.flower-detail-content>div {
     margin: var(--gap-distance);
 }

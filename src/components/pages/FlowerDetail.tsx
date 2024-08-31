@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import './FlowerDetail.css'
+import BreadCrumbs from '../shared/BreadCrumbs';
 
 const FlowerDetail = () => {
     const { id } = useParams<{ id: string }>();
@@ -37,9 +38,12 @@ const FlowerDetail = () => {
     }
     return (
         <div>
-            {flower?.name}
-            <div className='float-right'>
-                <a href='/'>Back</a>
+            <BreadCrumbs breadCrumb='Home' route='/' />
+            <div className='component-top'>
+                <h2>{flower?.name}</h2>
+                <div className='float-right'>
+                    <a href='/'>Volver</a>
+                </div>
             </div>
             <div className='flower-detail-content'>
                 <div className='flower-detail-image'>
@@ -47,11 +51,11 @@ const FlowerDetail = () => {
                 </div>
                 <div className='flower-detail-description'>
                     <ul>
-                        <li>Nombre: {flower?.name}</li>
-                        <li>Nombre científico: {flower?.binomialName}</li>
-                        <li>Tamaño: {flower?.heightInCm} cm</li>
-                        <li>Regar: {flower?.wateringsPerWeek}</li>
-                        <li>Precio: {flower?.price}</li>
+                        <li><label><b>Nombre:</b> {flower?.name}</label></li>
+                        <li><label><b>Nombre científico:</b> {flower?.binomialName}</label></li>
+                        <li><label><b>Tamaño:</b> {flower?.heightInCm} cm</label></li>
+                        <li><label><b>Regar:</b> {flower?.wateringsPerWeek} vez/es por semana</label></li>
+                        <li><label><b>Precio:</b> {flower?.price}</label></li>
                     </ul>
                 </div>
             </div>

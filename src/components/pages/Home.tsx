@@ -7,9 +7,11 @@ const Home = () => {
   const [search, setSearch] = useState('');
   return (
     <div className="home-content">
-      <label>Flower stock</label>
-      <div className='float-right'>
-        <SearchBar onSearchChange={setSearch} />
+      <div className='component-top'>
+        <h2>Catálogo de flores</h2>
+        <div className='float-right'>
+          <SearchBar onSearchChange={setSearch} />
+        </div>
       </div>
       <div className='home-list-view'>
         <FlowerStock filter={search} />

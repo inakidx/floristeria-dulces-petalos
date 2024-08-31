@@ -6,6 +6,7 @@ import logo from './assets/logo.svg';
 import FlowerDetail from './components/pages/FlowerDetail';
 
 function App() {
+
   return (
     <div className="App container">
       <header className="App-header">
@@ -18,6 +19,7 @@ function App() {
         <Router>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/Home" element={<Home />} />
             <Route path="/FlowerDetail/:id" element={<FlowerDetail />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

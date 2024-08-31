@@ -2,7 +2,15 @@
     margin-top: 8vh;
 }
 
-.fit-content{
+.fit-content {
     height: 100%;
     width: 100%;
+}
+
+.home-content h2 {
+    display: inline-block;
+}
+
+.home-list-view label {
+    font-size: 15px;
 }

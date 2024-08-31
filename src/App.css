@@ -2,6 +2,7 @@
   --main-background: white;
   --gap-distance: 3vh;
 }
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+CU:wght@100..400&display=swap');
 
 .App {
   background-color: var(--main-background);
@@ -14,20 +15,23 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  background-color: #f28d56;
   border-radius: 10px;
+  background-color: #e7e7e7;
+  position: relative;
 }
 
 .App-logo {
   height: 10vmin;
   pointer-events: auto;
-  padding: 7px;
+  padding: 5px;
+  position: absolute;
+  top:0;
 }
 
 .App-body {
   margin-top: var(--gap-distance);
   border-radius: 10px;
-  background-color: brown;
+  background-color: #f9e4e4;
 }
 
 .container {
