@@ -1,17 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Home.css'
 import SearchBar from './SearchBar'
 import FlowerStock from './FlowerStock'
 
 const Home = () => {
+  const [search, setSearch] = useState('');
   return (
     <div className="home-content container">
       <label>Flower stock</label>
       <div className='float-right'>
-        <SearchBar />
+        <SearchBar onSearchChange={setSearch} />
       </div>
       <div className='home-list-view'>
-        <FlowerStock />
+        <FlowerStock filter={search} />
       </div>
     </div>
   )

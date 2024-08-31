@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import ImageListView from './ImageListView';
+import ImageListView from './ImageListView/ImageListView';
 
-const FlowerStock = () => {
+interface FlowerStockProps {
+    filter: string,
+}
+
+const FlowerStock: React.FC<FlowerStockProps> = ({ filter }) => {
     const [flowerList, setData] = useState<Flower[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
@@ -34,8 +38,12 @@ const FlowerStock = () => {
         return <p>Error: {error} </p>;
     }
     return (
-        <ImageListView listView={flowerList} />
+        <ImageListView listView={getFilteredFlowers()} />
     )
+    function getFilteredFlowers(): Flower[] {
+        return flowerList.filter(f => f.name.toLowerCase().indexOf(filter.toLowerCase()) != -1
+    || f.binomialName.toLowerCase().indexOf(filter.toLowerCase()) != -1)
+    }
 }
 
 export default FlowerStock

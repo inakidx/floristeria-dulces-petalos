@@ -4,4 +4,5 @@ interface Flower{
     imgUrl:string,
     wateringsPerWeek:number,
     heightInCm:number,
+    binomialName:string,
 }

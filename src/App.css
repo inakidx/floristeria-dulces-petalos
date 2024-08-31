@@ -21,16 +21,17 @@
 .App-logo {
   height: 10vmin;
   pointer-events: auto;
+  padding: 7px;
 }
 
-.App-body{
+.App-body {
   margin-top: var(--gap-distance);
 }
 
-.container{
+.container {
   padding: var(--gap-distance);
 }
 
-.float-right{
+.float-right {
   float: inline-end;
 }

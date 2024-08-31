@@ -2,13 +2,14 @@ import './App.css';
 import Home from './components/Home';
 import { NotFound } from './components/NotFound';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import logo from './assets/logo.svg';
 
 function App() {
   return (
     <div className="App container">
       <header className="App-header">
         <a href="/">
-          <img src="./logo.svg" className="App-logo" alt="logo" />
+          <img src={logo} className="App-logo" alt="logo" />
         </a>
       </header>
       <body className='App-body'>
