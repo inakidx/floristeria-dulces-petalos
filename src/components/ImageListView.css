@@ -2,10 +2,16 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: center;
+    width: 100%;
 }
 
-.image-list-view-item-container{
-    margin-left: 30px;
-    margin-top: 30px;
+.image-list-view-item-container {
+    width: max(25%, 272px);
+    height: max(272px, 272px);
+}
+
+.image-list-view-item-content{
+    padding: var(--gap-distance);
+    height: -webkit-fill-available;
 }

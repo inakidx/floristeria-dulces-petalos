@@ -34,9 +34,7 @@ const FlowerStock = () => {
         return <p>Error: {error} </p>;
     }
     return (
-        <div>
-            <ImageListView listView={flowerList} />
-        </div>
+        <ImageListView listView={flowerList} />
     )
 }
 
