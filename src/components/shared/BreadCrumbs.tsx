@@ -1,17 +1,12 @@
 import React from 'react'
-import { useLocation } from 'react-router-dom';
 
 interface ImageListViewProps {
     breadCrumb: string,
     route: string,
 }
-const BreadCrumbs: React.FC<ImageListViewProps> = ({ breadCrumb }) => {
-    const location = useLocation();
-    if (location.pathname === '/')
-        return;
-
+const BreadCrumbs: React.FC<ImageListViewProps> = ({ breadCrumb, route }) => {
     return (
-        <a href={'/'}>{breadCrumb}</a>
+        <a href={route}>{breadCrumb}</a>
     )
 }
 

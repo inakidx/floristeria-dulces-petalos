@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import './FlowerDetail.css'
-import BreadCrumbs from '../shared/BreadCrumbs';
+import BreadCrumbs from '../../shared/BreadCrumbs';
 
 const FlowerDetail = () => {
     const { id } = useParams<{ id: string }>();
@@ -9,8 +9,8 @@ const FlowerDetail = () => {
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
 
+    const url = `https://dulces-petalos.herokuapp.com/api/product/${id}`;
     useEffect(() => {
-        const url = `https://dulces-petalos.herokuapp.com/api/product/${id}`;
         fetch(url)
             .then(response => {
                 if (!response.ok) {
@@ -26,7 +26,7 @@ const FlowerDetail = () => {
                 setError(error);
                 setLoading(false);
             });
-    }, []);
+    }, [url]);
 
     if (loading) {
         //TODO: show loading component
@@ -34,8 +34,20 @@ const FlowerDetail = () => {
     }
     if (error) {
         //TODO: redirect to error
-        return <p>Error: {error} </p>;
+        console.log(error);
+        return <label>Error: No se ha podido obtener información del servidor</label>;
     }
+
+    function getFertilizerType(fertilizerType: string | undefined): string {
+        if (fertilizerType === "nitrogen") {
+            return "nitrogenado"
+        }
+        if (fertilizerType === "phosphorus") {
+            return "fosforado"
+        }
+        return "desconocido";
+    }
+
     return (
         <div>
             <BreadCrumbs breadCrumb='Home' route='/' />
@@ -47,7 +59,7 @@ const FlowerDetail = () => {
             </div>
             <div className='flower-detail-content'>
                 <div className='flower-detail-image'>
-                    <img src={flower?.imgUrl}></img>
+                    <img alt={`foto de la flor ${flower?.name}`} src={flower?.imgUrl}></img>
                 </div>
                 <div className='flower-detail-description'>
                     <ul>
@@ -56,6 +68,7 @@ const FlowerDetail = () => {
                         <li><label><b>Tamaño:</b> {flower?.heightInCm} cm</label></li>
                         <li><label><b>Regar:</b> {flower?.wateringsPerWeek} vez/es por semana</label></li>
                         <li><label><b>Precio:</b> {flower?.price}</label></li>
+                        <li><label><b>Tipo de fertilizante:</b> {getFertilizerType(flower?.fertilizerType)}</label></li>
                     </ul>
                 </div>
             </div>

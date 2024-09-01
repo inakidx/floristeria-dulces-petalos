@@ -8,10 +8,10 @@ interface FlowerStockProps {
 const FlowerStock: React.FC<FlowerStockProps> = ({ filter }) => {
     const [flowerList, setFlowerList] = useState<Flower[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
-    const [error, setError] = useState<string | null>(null);
+    const [error, setError] = useState<string | null>('No se ha podido acceder a la API');
 
+    const url = 'https://dulces-petalos.herokuapp.com/api/product';
     useEffect(() => {
-        const url = 'https://dulces-petalos.herokuapp.com/api/product';
         fetch(url)
             .then(response => {
                 if (!response.ok) {
@@ -27,7 +27,7 @@ const FlowerStock: React.FC<FlowerStockProps> = ({ filter }) => {
                 setError(error);
                 setLoading(false);
             });
-    }, []);
+    }, [url]);
 
     if (loading) {
         //TODO: show loading component
@@ -35,18 +35,21 @@ const FlowerStock: React.FC<FlowerStockProps> = ({ filter }) => {
     }
     if (error) {
         //TODO: redirect to error
-        return <p>Error: {error} </p>;
+        console.log(error);
+        return <label>Error: No se ha podido obtenider información del servidor</label>;
     }
+
     return (
         <ImageListView listView={getFilteredFlowers()} />
     )
+
     function getFilteredFlowers(): IImageListViewItem[] {
         return flowerList.filter(f => containsIgnoringCase(f.name, filter)
             || containsIgnoringCase(f.binomialName, filter))
             .map(f => (getImageListViewItem(f)))
     }
     function containsIgnoringCase(s1: string, s2: string): boolean {
-        return s1.toLowerCase().indexOf(s2.toLowerCase()) != -1
+        return s1.toLowerCase().indexOf(s2.toLowerCase()) !== -1
     }
     function getImageListViewItem(f: Flower): IImageListViewItem {
         return {
