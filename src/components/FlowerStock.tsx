@@ -8,10 +8,10 @@ interface FlowerStockProps {
 const FlowerStock: React.FC<FlowerStockProps> = ({ filter }) => {
     const [flowerList, setFlowerList] = useState<Flower[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
-    const [error, setError] = useState<string | null>('No se ha podido acceder a la API');
+    const [error, setError] = useState<string | null>(null);
 
-    const url = 'https://dulces-petalos.herokuapp.com/api/product';
     useEffect(() => {
+        const url = 'https://dulces-petalos.jakala.es/api/product';
         fetch(url)
             .then(response => {
                 if (!response.ok) {
@@ -27,7 +27,7 @@ const FlowerStock: React.FC<FlowerStockProps> = ({ filter }) => {
                 setError(error);
                 setLoading(false);
             });
-    }, [url]);
+    }, []);
 
     if (loading) {
         //TODO: show loading component

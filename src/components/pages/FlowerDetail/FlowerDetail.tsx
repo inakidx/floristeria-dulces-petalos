@@ -9,8 +9,8 @@ const FlowerDetail = () => {
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
 
-    const url = `https://dulces-petalos.herokuapp.com/api/product/${id}`;
     useEffect(() => {
+        const url = `https://dulces-petalos.jakala.es/api/product/${id}`;
         fetch(url)
             .then(response => {
                 if (!response.ok) {
@@ -26,7 +26,7 @@ const FlowerDetail = () => {
                 setError(error);
                 setLoading(false);
             });
-    }, [url]);
+    }, []);
 
     if (loading) {
         //TODO: show loading component
