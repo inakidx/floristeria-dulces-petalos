@@ -67,7 +67,7 @@ const FlowerDetail = () => {
                         <li><label><b>Nombre científico:</b> {flower?.binomialName}</label></li>
                         <li><label><b>Tamaño:</b> {flower?.heightInCm} cm</label></li>
                         <li><label><b>Regar:</b> {flower?.wateringsPerWeek} vez/es por semana</label></li>
-                        <li><label><b>Precio:</b> {flower?.price}</label></li>
+                        <li><label><b>Precio:</b> {flower?.price} €</label></li>
                         <li><label><b>Tipo de fertilizante:</b> {getFertilizerType(flower?.fertilizerType)}</label></li>
                     </ul>
                 </div>

@@ -10,6 +10,7 @@ const FlowerStock: React.FC<FlowerStockProps> = ({ filter }) => {
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
 
+    //TODO: sacar esta gestión a un componente y la llamada a la API con sus métodos a una clase para comunicarse con el negocio
     useEffect(() => {
         const url = 'https://dulces-petalos.jakala.es/api/product';
         fetch(url)
