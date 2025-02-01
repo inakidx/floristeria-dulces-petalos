@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import './FlowerDetail.css'
 import BreadCrumbs from '../../shared/BreadCrumbs';
+import { flowerRepository } from '../../shared/FlowerRepository';
+import { FertilizerType, Flower } from '../../../domain/entities/Flower';
 
 const FlowerDetail = () => {
     const { id } = useParams<{ id: string }>();
@@ -10,16 +12,9 @@ const FlowerDetail = () => {
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        const url = `https://dulces-petalos.jakala.es/api/product/${id}`;
-        fetch(url)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('dulces-petalos api not working');
-                }
-                return response.json();
-            })
-            .then((data: Flower) => {
-                setFlower(data);
+        flowerRepository.getFlowerById(id!)
+            .then((flower: Flower) => {
+                setFlower(flower);
                 setLoading(false);
             })
             .catch(error => {
@@ -38,11 +33,11 @@ const FlowerDetail = () => {
         return <label>Error: No se ha podido obtener información del servidor</label>;
     }
 
-    function getFertilizerType(fertilizerType: string | undefined): string {
-        if (fertilizerType === "nitrogen") {
+    function getFertilizerTypeSpanish(fertilizerType: FertilizerType | undefined): string {
+        if (fertilizerType === FertilizerType.nitrogenado) {
             return "nitrogenado"
         }
-        if (fertilizerType === "phosphorus") {
+        if (fertilizerType === FertilizerType.fosforado) {
             return "fosforado"
         }
         return "desconocido";
@@ -68,7 +63,7 @@ const FlowerDetail = () => {
                         <li><label><b>Tamaño:</b> {flower?.heightInCm} cm</label></li>
                         <li><label><b>Regar:</b> {flower?.wateringsPerWeek} vez/es por semana</label></li>
                         <li><label><b>Precio:</b> {flower?.price} €</label></li>
-                        <li><label><b>Tipo de fertilizante:</b> {getFertilizerType(flower?.fertilizerType)}</label></li>
+                        <li><label><b>Tipo de fertilizante:</b> {getFertilizerTypeSpanish(flower?.fertilizerType)}</label></li>
                     </ul>
                 </div>
             </div>

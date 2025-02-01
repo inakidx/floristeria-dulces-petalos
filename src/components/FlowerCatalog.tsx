@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ImageListView from './shared/ImageListView/ImageListView';
+import { flowerRepository } from './shared/FlowerRepository';
+import { Flower } from '../domain/entities/Flower';
 
 interface FlowerStockProps {
     filter: string,
@@ -10,18 +12,10 @@ const FlowerStock: React.FC<FlowerStockProps> = ({ filter }) => {
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
 
-    //TODO: sacar esta gestión a un componente y la llamada a la API con sus métodos a una clase para comunicarse con el negocio
     useEffect(() => {
-        const url = 'https://dulces-petalos.jakala.es/api/product';
-        fetch(url)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('dulces-petalos api not working');
-                }
-                return response.json();
-            })
-            .then((data: Flower[]) => {
-                setFlowerList(data);
+        flowerRepository.getAllFlowers()
+            .then(flowers => {
+                setFlowerList(flowers)
                 setLoading(false);
             })
             .catch(error => {
@@ -36,8 +30,8 @@ const FlowerStock: React.FC<FlowerStockProps> = ({ filter }) => {
     }
     if (error) {
         //TODO: redirect to error
-        console.log(error);
-        return <label>Error: No se ha podido obtenider información del servidor</label>;
+        console.log(JSON.stringify(error));
+        return <label>Error: No se ha podido obtener información del servidor</label>;
     }
 
     return (
@@ -54,7 +48,7 @@ const FlowerStock: React.FC<FlowerStockProps> = ({ filter }) => {
     }
     function getImageListViewItem(f: Flower): IImageListViewItem {
         return {
-            id: f.id, name: f.name, imgUrl: f.imgUrl, subName: f.binomialName, price: f.price,
+            id: f.id, name: f.name, imgUrl: f.imgUrl, subName: f.binomialName, rightTopCornerLabel: f.price,
             redirectUrl: `/FlowerDetail/${f.id}`
         }
     }

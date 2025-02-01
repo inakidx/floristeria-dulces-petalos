@@ -8,7 +8,6 @@
     height: -webkit-fill-available;
     border-radius: 10px;
     cursor: pointer;
-    overflow: hidden;
 }
 
 .image-list-view-item *{

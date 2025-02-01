@@ -11,7 +11,7 @@ const ImageListViewItem: React.FC<ImageListViewItemProps> = ({ imageListViewItem
             <div className='image-list-view-item zoomable'>
                 <img className='image-list-view-item-bg' src={imageListViewItem.imgUrl}></img>
                 <div className='image-list-view-item-right-up-corner'>
-                    <label className='item-name'>{imageListViewItem.price}€</label>
+                    <label className='item-name'>{imageListViewItem.rightTopCornerLabel}€</label>
                 </div>
                 <div className='image-list-view-item-text'>
                     <label className='item-name'>{imageListViewItem.name}</label>

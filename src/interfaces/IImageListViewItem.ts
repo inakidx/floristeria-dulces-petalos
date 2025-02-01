@@ -3,6 +3,6 @@ interface IImageListViewItem {
     imgUrl: string,
     subName: string,
     name: string,
-    price: number,
+    rightTopCornerLabel: number,
     redirectUrl: string,
 }

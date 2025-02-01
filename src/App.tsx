@@ -15,7 +15,7 @@ function App() {
         </a>
         <h1 className='App-title'>Dulces pétalos</h1>
       </header>
-      <body className='App-body container'>
+      <div className='App-body container'>
         <Router>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -23,7 +23,7 @@ function App() {
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Router>
-      </body>
+      </div>
     </div>
   );
 }
