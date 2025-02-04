@@ -1,9 +1,9 @@
 import './App.css';
-import Home from './components/pages/Home/Home';
-import { NotFound } from './components/pages/NotFound';
+import Home from './ui/components/pages/Home/Home';
+import { NotFound } from './ui/components/pages/NotFound';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import logo from './assets/logo.svg';
-import FlowerDetail from './components/pages/FlowerDetail/FlowerDetail';
+import FlowerDetail from './ui/components/pages/FlowerDetail/FlowerDetail';
 
 function App() {
 

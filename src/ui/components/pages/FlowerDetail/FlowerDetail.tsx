@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import './FlowerDetail.css'
 import BreadCrumbs from '../../shared/BreadCrumbs';
-import { flowerRepository } from '../../shared/FlowerRepository';
-import { FertilizerType, Flower } from '../../../domain/entities/Flower';
+import { flowerService } from '../../../../inversionOfControls/DependecyInyector';
+import { FertilizerType, Flower } from '../../../../domain/entities/Flower';
 
 const FlowerDetail = () => {
     const { id } = useParams<{ id: string }>();
@@ -12,7 +12,7 @@ const FlowerDetail = () => {
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        flowerRepository.getFlowerById(id!)
+        flowerService.getFlowerById(id!)
             .then((flower: Flower) => {
                 setFlower(flower);
                 setLoading(false);

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ImageListView from './shared/ImageListView/ImageListView';
-import { flowerRepository } from './shared/FlowerRepository';
-import { Flower } from '../domain/entities/Flower';
+import { flowerService } from '../../inversionOfControls/DependecyInyector';
+import { Flower } from '../../domain/entities/Flower';
 
 interface FlowerStockProps {
     filter: string,
@@ -13,7 +13,7 @@ const FlowerStock: React.FC<FlowerStockProps> = ({ filter }) => {
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        flowerRepository.getAllFlowers()
+        flowerService.getAllFlowers()
             .then(flowers => {
                 setFlowerList(flowers)
                 setLoading(false);
