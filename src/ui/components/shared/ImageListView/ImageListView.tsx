@@ -10,7 +10,7 @@ const ImageListView: React.FC<ImageListViewProps> = ({ listView }) => {
     <div className='image-list-view-content'>
       {
         listView.map((item, index) => (
-          <div className='image-list-view-item-container'>
+          <div key={index} className='image-list-view-item-container'>
             <div className='image-list-view-item-content'>
               <ImageListViewItem key={index} imageListViewItem={item} />
             </div>
