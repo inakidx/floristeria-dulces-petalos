@@ -43,6 +43,13 @@
     right: 0;
 }
 
+.image-list-view-item-left-up-corner {
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
 .item-name {
     color: white;
     background-color: #808080cc;

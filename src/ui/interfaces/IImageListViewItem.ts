@@ -4,5 +4,6 @@ interface IImageListViewItem {
     subName: string,
     name: string,
     rightTopCornerLabel: number,
+    leftTopCornerLabel: string,
     redirectUrl: string,
 }

@@ -13,6 +13,9 @@ const ImageListViewItem: React.FC<ImageListViewItemProps> = ({ imageListViewItem
                 <div className='image-list-view-item-right-up-corner'>
                     <label className='item-name'>{imageListViewItem.rightTopCornerLabel}€</label>
                 </div>
+                <div className='image-list-view-item-left-up-corner'>
+                    <label className='item-name'>{imageListViewItem.leftTopCornerLabel}</label>
+                </div>
                 <div className='image-list-view-item-text'>
                     <label className='item-name'>{imageListViewItem.name}</label>
                     {imageListViewItem.subName &&

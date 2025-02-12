@@ -49,7 +49,7 @@ const FlowerStock: React.FC<FlowerStockProps> = ({ filter }) => {
     function getImageListViewItem(f: Flower): IImageListViewItem {
         return {
             id: f.id, name: f.name, imgUrl: f.imgUrl, subName: f.binomialName, rightTopCornerLabel: f.price,
-            redirectUrl: `/FlowerDetail/${f.id}`
+            redirectUrl: `/FlowerDetail/${f.id}`, leftTopCornerLabel: f.status
         }
     }
 }

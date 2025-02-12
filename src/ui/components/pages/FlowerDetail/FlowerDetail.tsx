@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import './FlowerDetail.css'
 import BreadCrumbs from '../../shared/BreadCrumbs';
 import { flowerService } from '../../../../inversionOfControls/DependecyInyector';
-import { FertilizerType, Flower } from '../../../../domain/entities/Flower';
+import { FertilizerType, Flower, StatusType } from '../../../../domain/entities/Flower';
 
 const FlowerDetail = () => {
     const { id } = useParams<{ id: string }>();
@@ -43,6 +43,22 @@ const FlowerDetail = () => {
         return "desconocido";
     }
 
+    function getStatusTypeSpanish(statusType: StatusType | undefined): string {
+        if (statusType === StatusType.commingSoon) {
+            return "llega en breve"
+        }
+        if (statusType === StatusType.outOfStock) {
+            return "sin stock"
+        }
+        if (statusType === StatusType.new) {
+            return "nuevo"
+        }
+        if (statusType === StatusType.default) {
+            return "en tienda"
+        }
+        return "desconocido";
+    }
+
     return (
         <div>
             <BreadCrumbs breadCrumb='Home' route='/' />
@@ -64,6 +80,7 @@ const FlowerDetail = () => {
                         <li><label><b>Regar:</b> {flower?.wateringsPerWeek} vez/es por semana</label></li>
                         <li><label><b>Precio:</b> {flower?.price} €</label></li>
                         <li><label><b>Tipo de fertilizante:</b> {getFertilizerTypeSpanish(flower?.fertilizerType)}</label></li>
+                        <li><label><b>Estado:</b> {getStatusTypeSpanish(flower?.status)}</label></li>
                     </ul>
                 </div>
             </div>
