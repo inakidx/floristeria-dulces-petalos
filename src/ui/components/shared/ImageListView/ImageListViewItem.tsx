@@ -1,13 +1,15 @@
 
 import React from 'react'
 import './ImageListViewItem.css';
+import { Link } from 'react-router-dom';
+import IImageListViewItem from '../../../interfaces/IImageListViewItem';
 
 interface ImageListViewItemProps {
     imageListViewItem: IImageListViewItem,
 }
 const ImageListViewItem: React.FC<ImageListViewItemProps> = ({ imageListViewItem }) => {
     return (
-        <a href={imageListViewItem.redirectUrl}>
+        <Link to={imageListViewItem.redirectUrl}>
             <div className='image-list-view-item zoomable'>
                 <img className='image-list-view-item-bg' src={imageListViewItem.imgUrl}></img>
                 <div className='image-list-view-item-right-up-corner'>
@@ -23,7 +25,7 @@ const ImageListViewItem: React.FC<ImageListViewItemProps> = ({ imageListViewItem
                     }
                 </div>
             </div>
-        </a>
+        </Link>
     )
 }
 

@@ -1,4 +1,4 @@
-export interface IImageListViewItem {
+interface IImageListViewItem {
     id: string,
     imgUrl: string,
     subName: string,
@@ -7,3 +7,4 @@ export interface IImageListViewItem {
     leftTopCornerLabel: string,
     redirectUrl: string,
 }
+export default IImageListViewItem

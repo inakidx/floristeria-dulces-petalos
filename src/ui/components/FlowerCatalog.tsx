@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import ImageListView from './shared/ImageListView/ImageListView';
 import { flowerService } from '../../inversionOfControls/DependecyInyector';
 import { Flower } from '../../domain/entities/Flower';
+import IImageListViewItem from '../interfaces/IImageListViewItem';
 
 interface FlowerStockProps {
     filter: string,
@@ -44,7 +45,7 @@ const FlowerStock: React.FC<FlowerStockProps> = ({ filter }) => {
             .map(f => (getImageListViewItem(f)))
     }
     function containsIgnoringCase(s1: string, s2: string): boolean {
-        return s1.toLowerCase().indexOf(s2.toLowerCase()) !== -1
+        return s1?.toLowerCase().indexOf(s2?.toLowerCase()) !== -1
     }
     function getImageListViewItem(f: Flower): IImageListViewItem {
         return {

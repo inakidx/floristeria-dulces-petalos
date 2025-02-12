@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 interface ImageListViewProps {
     breadCrumb: string,
@@ -6,7 +7,7 @@ interface ImageListViewProps {
 }
 const BreadCrumbs: React.FC<ImageListViewProps> = ({ breadCrumb, route }) => {
     return (
-        <a href={route}>{breadCrumb}</a>
+        <Link to={route}>{breadCrumb}</Link>
     )
 }
 

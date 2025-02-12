@@ -1,6 +1,7 @@
 import React from 'react'
 import ImageListViewItem from './ImageListViewItem'
 import './ImageListView.css'
+import IImageListViewItem from '../../../interfaces/IImageListViewItem'
 
 interface ImageListViewProps {
   listView: IImageListViewItem[],

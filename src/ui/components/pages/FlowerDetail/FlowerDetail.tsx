@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import './FlowerDetail.css'
 import BreadCrumbs from '../../shared/BreadCrumbs';
 import { flowerService } from '../../../../inversionOfControls/DependecyInyector';
@@ -65,7 +65,7 @@ const FlowerDetail = () => {
             <div className='component-top'>
                 <h2>{flower?.name}</h2>
                 <div className='float-right'>
-                    <a href='/'>Volver</a>
+                    <Link to='/'>Volver</Link>
                 </div>
             </div>
             <div className='flower-detail-content'>
