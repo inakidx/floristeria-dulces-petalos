@@ -1,4 +1,4 @@
-interface IImageListViewItem {
+export interface IImageListViewItem {
     id: string,
     imgUrl: string,
     subName: string,
